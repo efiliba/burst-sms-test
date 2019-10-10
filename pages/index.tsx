@@ -1,11 +1,12 @@
 import React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 import { NextPage } from 'next';
+import { SendSMSCard } from '../src/modules';
 
 const IndexPage: NextPage = () =>
   <>
     <GlobalStyle />
-    <App>Test Page</App>
+    <SendSMSCard />
   </>;
 
 export default IndexPage;
@@ -16,8 +17,4 @@ const GlobalStyle = createGlobalStyle`
     background-color: #333;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
-`;
-
-const App = styled.h2`
-  color: red;
 `;
