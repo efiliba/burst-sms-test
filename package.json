@@ -1,0 +1,33 @@
+{
+  "name": "burst-sms-test",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "NODE_ENV=development next",
+    "build": "NODE_ENV=production next build",
+    "start": "next start",
+    "tsc": "tsc",
+    "test": "NODE_ENV=test jest"
+  },
+  "dependencies": {
+    "next": "^9.1.1",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "styled-components": "^4.4.0"
+  },
+  "devDependencies": {
+    "@types/enzyme": "^3.10.3",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/jest": "^24.0.18",
+    "@types/react": "^16.9.5",
+    "@types/react-dom": "^16.8.2",
+    "@types/styled-components": "^4.1.19",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^24.9.0",
+    "babel-plugin-styled-components": "^1.10.6",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "jest": "^24.9.0",
+    "react-test-renderer": "^16.10.2",
+    "typescript": "^3.6.3"
+  }
+}
