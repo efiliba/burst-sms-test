@@ -1,15 +1,19 @@
 import React from 'react';
-import styled from 'styled-components';
+import MuiButton from '@material-ui/core/Button';
 
 interface ButtonProps {
   text: string;
 }
 
 const Button: React.FC<ButtonProps> = ({ text }) =>
-  <Container>{text}</Container>;
-
-const Container = styled.div`
-  width: 100%;
-`;
+  <MuiButton
+    type="submit"
+    color="primary"
+    variant="contained"
+    size="large"
+    disabled={false}
+  >
+    {text}
+  </MuiButton>;
 
 export default Button;

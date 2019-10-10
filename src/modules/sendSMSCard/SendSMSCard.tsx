@@ -1,18 +1,25 @@
 import React from 'react';
-import styled from 'styled-components';
+import { makeStyles } from '@material-ui/styles';
+import MuiPaper from '@material-ui/core/Paper';
 import { PhoneNumber, SMSInput, Button } from '../../components';
 
-const SendSMSCard: React.FC = () =>
-  <Container>
+const SendSMSCard: React.FC<{className: string;}> = ({className}) =>
+  <MuiPaper elevation={3} className={className}>
     <PhoneNumber />
     <SMSInput maxLength={100} />
     <Button text="submit" />
-  </Container>;
+  </MuiPaper>;
 
-const Container = styled.div`
-  height: 10rem;
-  width: 10rem;
-  outline: solid 1px red;
-`;
+const useStyles = makeStyles({
+  container: {
+    width: 400,
+    height: 300,
+    margin: '50px auto 0'
+  }
+});
 
-export default SendSMSCard;
+export default () => {
+   const classes = useStyles({});
+ 
+   return <SendSMSCard className={classes.container} />;
+};
