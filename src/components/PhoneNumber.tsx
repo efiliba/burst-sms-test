@@ -11,11 +11,11 @@ interface PhoneNumberProps {
 const PhoneNumber: React.FC<PhoneNumberProps> = ({value, onChange}) => {
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleChange = (event: any): void => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const raw = event.target.value.replace(/\D/g, '').slice(0, MAX_PHONE_NUMBER_DIGITS);
 
     // First digit not entered or 0 and second digit not entered or 4 i.e. if given starts with 04
-    const prefixValid = (raw[0] == null || raw[0] == 0) && (raw[1] == null || raw[1] == 4);
+    const prefixValid = (raw[0] == null || raw[0] === '0') && (raw[1] == null || raw[1] === '4');
     const lengthValid = raw.length === MAX_PHONE_NUMBER_DIGITS;
 
     if (!prefixValid) {

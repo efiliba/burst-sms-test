@@ -1,22 +1,38 @@
 import React from 'react';
-import MuiFormControl from '@material-ui/core/FormControl';
-import MuiInputLabel from '@material-ui/core/InputLabel';
-import MuiFormHelperText from '@material-ui/core/FormHelperText';
-import MuiInput from '@material-ui/core/Input';
+import { makeStyles } from '@material-ui/styles';
+import MuiTextField from '@material-ui/core/TextField';
 
 interface SMSInputProps {
-  maxLength: number;
+  value: string;
+  onChange(value: string): void;
 }
 
-const SMSInput: React.FC<SMSInputProps> = ({ maxLength }) =>
-  <MuiFormControl
-    disabled={false}
-    error={false}
-    fullWidth
-  >
-    <MuiInputLabel>Enter message to send</MuiInputLabel>
-    <MuiInput type="text" />
-    <MuiFormHelperText>{`update length ${maxLength}`}</MuiFormHelperText>
-  </MuiFormControl>;
+const SMSInput: React.FC<SMSInputProps & {className: string}> = ({className, value, onChange}) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange(e.target.value);
+  };
 
-export default SMSInput;
+  return (
+    <MuiTextField
+      className={className}
+      fullWidth
+      multiline
+      rows={5}
+      label="Enter message to send"
+      value={value}
+      onChange={handleChange}
+    />
+  );
+};
+
+const useStyles = makeStyles({
+  container: {
+    margin: '20px 0'
+  }
+});
+
+export default ({value, onChange}: SMSInputProps) => {
+   const classes = useStyles({});
+ 
+   return <SMSInput className={classes.container} value={value} onChange={onChange} />;
+};
