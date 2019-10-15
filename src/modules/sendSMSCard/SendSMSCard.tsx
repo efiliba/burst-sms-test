@@ -1,25 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import MuiPaper from '@material-ui/core/Paper';
 import { PhoneNumber, SMSInput, Button } from '../../components';
 import { sendSMS } from '../../services';
 
-const handleClick = () => {
-  sendSMS({number: "61414431273", message: "Here's a little note I wrote."});
-};
+const SendSMSCard: React.FC<{className: string;}> = ({className}) => {
+  const [value, setValue] = useState('');
+  const [valid, setValid] = useState(false);
 
-const SendSMSCard: React.FC<{className: string;}> = ({className}) =>
-  <MuiPaper elevation={3} className={className}>
-    <PhoneNumber />
-    <SMSInput maxLength={100} />
-    <Button text="submit" onClick={handleClick} />
-  </MuiPaper>;
+  const handleChange = ({value, valid}: {value: string, valid: boolean}) => {
+    setValue(value);
+    setValid(valid);
+  };
+
+  const handleClick = () => {
+    sendSMS({number: value, message: "Here's a little note I wrote."});
+  };
+
+  return (
+    <MuiPaper elevation={3} className={className}>
+      <PhoneNumber value={value} onChange={handleChange} />
+      <SMSInput />
+      <Button text="submit" onClick={handleClick} enable={valid} />
+    </MuiPaper>
+  );
+};
 
 const useStyles = makeStyles({
   container: {
     width: 400,
-    height: 300,
-    margin: '50px auto 0'
+    height: 255,
+    margin: '50px auto 0',
+    padding: 20
   }
 });
 
